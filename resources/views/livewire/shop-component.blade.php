@@ -20,7 +20,7 @@
 
             <div class="wrap-shop-control">
 
-                <h1 class="shop-title">Digital & Electronics</h1>
+                <h1 class="shop-title">Products</h1>
 
                 <div class="wrap-right">
 
