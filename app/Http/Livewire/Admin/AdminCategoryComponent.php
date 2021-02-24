@@ -9,6 +9,8 @@ use Livewire\WithPagination;
 class AdminCategoryComponent extends Component
 {
     use WithPagination;
+
+    
     public function render()
     {
         $categories = Category::paginate(5);
