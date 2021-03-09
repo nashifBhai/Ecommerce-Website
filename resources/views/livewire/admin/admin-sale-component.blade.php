@@ -4,33 +4,32 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Manage Home Categories
+                    Sale Setting
                 </div>
                 <div class="panel-body">
                     @if (Session::has('message'))
                         <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                     @endif
-                    <form class="form-horizontal" wire:submit.prevent = "updateHomeCategory">
+                    <form class="form-horizontal" wire:submit.prevent = "updateSale">
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Choose Categories</label>
+                            <label class="col-md-4 control-label">Status</label>
                             <div class="col-md-4" wire:ignore>
-                                <select class="sel_categories form-control" name="categories[]" multiple = "multiple" wire:model="selected_categories">
-                                    @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
+                                <select class="form-control" wire:model="status">
+                                    <option value="0">Inactive</option>
+                                    <option value="1">Active</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-4 control-label">No of Products</label>
+                            <label class="col-md-4 control-label">Sale Finishing Date</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control input-md" wire:model= "numberofproducts"/>
+                                <input type="text" id= "sale-date" placeholder="YYYY/MM/DD H:M:S" class="form-control input-md" wire:model= "sale_date"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label"></label>
                             <div class="col-md-4">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </form>
@@ -42,12 +41,14 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function(){
-            $('.sel_categories').select2();
-            $('.sel_categories').on('change',function(e)
+        $(function(){
+            $('#sale-date').datetimepicker({
+                format: 'Y-MM-DD h:m:s',
+            })
+            .on('dp.change',function(ev)
             {
-                var data = $('.sel_categories').select2("val");
-                @this.set('selected_categories',data);
+                var data = $('#sale-date').val();
+                @this.set('sale_date',data);
             });
         });
     </script>
