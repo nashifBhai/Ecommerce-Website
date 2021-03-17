@@ -15,7 +15,7 @@ class AdminProductComponent extends Component
     {
         $product = Product ::find($id);
         $product->delete();
-        session()->flash('message', 'Category has been deleted successfully');
+        session()->flash('message', 'Product has been deleted successfully');
     }
     public function render()
     {
