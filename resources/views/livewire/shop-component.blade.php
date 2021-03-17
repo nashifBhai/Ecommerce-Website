@@ -53,10 +53,36 @@
                 </div>
 
             </div><!--end wrap shop control-->
+            <style>
+                .product-wish{
+                    position: absolute;
+                    top:10%;
+                    left:0;
+                    z-index: 99;
+                    right: 30px;
+                    text-align: right;
+                    padding-top: 0;
 
+                }
+                .product-wish .fa{
+                    color: #cbcbcb;
+
+                }
+                .product-wish .fa:hover{
+                    color: #ff1707;
+                    font-size: 32px;
+                    
+                }
+                .fill-heart{
+                    color: #ff1707 !important;
+                }
+            </style>
             <div class="row">
 
                 <ul class="product-list grid-products equal-container">
+                    @php
+                        $witems = Cart::instance('wish-list')->content()->pluck('id');
+                    @endphp
                         @foreach ($products as $product)
                     
                     <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
@@ -70,6 +96,13 @@
                                 <a href="{{route('product.details',['slug'=>$product->slug])}}" class="product-name"><span>{{$product->name}}</span></a>
                                 <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
                                 <a href="#" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add To Cart</a>
+                                <div class="product-wish">
+                                    @if ($witems->contains($product->id))
+                                        <a href="#"> <i class="fa fa-heart fill-heart"></i></a>
+                                    @else
+                                    <a href="#" wire:click.prevent = "addToWishList({{$product->id}},'{{$product->name}}',{{$product->regular_price}})"> <i class="fa fa-heart"></i></a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </li>
