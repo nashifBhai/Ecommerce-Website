@@ -36,8 +36,21 @@ class ShopComponent extends Component
     {
 
         Cart::instance('wish-list')->add($product_id, $product_name, 1,$product_price)->associate('App\Models\Product');
+        $this->emitTo('wishlist-count-component','refreshComponent');
          session()->flash('success_message','Item added in wish-list');
-         return redirect()->route('product.cart');
+
+    }
+
+    public function removeFromWishList($product_id)
+    {
+
+        foreach (Cart::instance('wish-list')->content() as $witem) {
+            if($witem->id == $product_id){
+                Cart::instance('wish-list')->remove($witem->rowId);
+                $this->emitTo('wishlist-count-component','refreshComponent');
+                return;
+            }
+        }
 
     }
     use WithPagination;
