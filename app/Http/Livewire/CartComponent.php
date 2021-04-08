@@ -10,7 +10,6 @@ use Carbon\Carbon;
 
 use Cart;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Routing\Redirector;
 
 
 class CartComponent extends Component
@@ -132,7 +131,7 @@ class CartComponent extends Component
     {
         if(Auth::check())
         {
-            return redirect()->route('chekout');
+            return redirect()->route('product.checkout');
         }
         else
         {

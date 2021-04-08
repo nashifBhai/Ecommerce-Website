@@ -10,7 +10,7 @@
 			</div>
 			<div class=" main-content-area">
 				
-				@if(Cart::instance('cart')->count()>0)
+			@if(Cart::instance('cart')->count()>0)
 				<div class="wrap-iten-in-cart">
 					@if (Session::has('success_message'))
 				<div class="alert alert-success">
@@ -95,7 +95,7 @@
 
 					@endif
 				@endif
-						<a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>
+						<a class="btn btn-checkout" href="#" wire:click.prevent="checkout()">Check out</a>
 						<a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 					</div>
 					<div class="update-clear">
