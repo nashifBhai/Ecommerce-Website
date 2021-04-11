@@ -96,7 +96,7 @@
 					@endif
 				@endif
 						<a class="btn btn-checkout" href="#" wire:click.prevent="checkout()">Check out</a>
-						<a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+						<a class="link-to-shop" href="/shop">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 					</div>
 					<div class="update-clear">
 						<a class="btn btn-clear" href="#" wire:click.prevent="destroyAll()">Clear Shopping Cart</a>

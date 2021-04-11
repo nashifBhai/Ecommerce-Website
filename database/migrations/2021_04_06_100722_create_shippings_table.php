@@ -23,7 +23,7 @@ class CreateShippingsTable extends Migration
             $table->string('line1');
             $table->string('line2')->nullable();
             $table->string('city');
-            $table->string('province');
+            $table->string('state');
             $table->string('country');
             $table->string('zipcode');
             $table->timestamps();
