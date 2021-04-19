@@ -92,10 +92,13 @@
 											<a title="Manage Home Categories" href="{{route('admin.homecategories')}}">Manage Home Categories</a>
 										</li>
 										<li class="menu-item" >
-											<a title="All Coupon" href="{{route('admin.sale')}}">Sale Setting</a>
+											<a title="Sale Setting" href="{{route('admin.sale')}}">Sale Setting</a>
 										</li>
 										<li class="menu-item" >
-											<a title="Sale Setting" href="{{route('admin.coupons')}}">All Coupons</a>
+											<a title="All Coupon" href="{{route('admin.coupons')}}">All Coupons</a>
+										</li>
+										<li class="menu-item" >
+											<a title="All Orders" href="{{route('admin.orders')}}">All Orders</a>
 										</li>
 										<li class="menu-item" >
 											<a title="Logout" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -138,7 +141,7 @@
 					<div class="mid-section main-info-area">
 
 						<div class="wrap-logo-top left-section">
-							<a href="index.html" class="link-to-home"><img src="{{asset('assets/images/logo-top-1.png')}}" alt="mercado"></a>
+							<a href="/" class="link-to-home"><img src="{{asset('assets/images/logo-top-1.png')}}" alt="mercado"></a>
 						</div>
 
 						@livewire('header-search-component')
