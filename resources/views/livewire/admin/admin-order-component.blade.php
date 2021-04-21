@@ -16,10 +16,6 @@
                         <div class="col-md-6">
                             All Orders
                         </div>
-                        
-                        <div class="col-md-6">
-                            <a href="#" class="btn btn-success pull-right">Action</a>
-                        </div>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -61,8 +57,7 @@
                                 <td>{{ $order->created_at }}</td>
 
                                 <td>
-                                    <a href="#"><i class="fa fa-edit fa-2x"></i></a>
-                                    <a href="#" onclick="confirm('Are you sure?')||event.stopImmediatePropagation()" style="margin-left:10px;" wire:click.prevent="#"><i class="fa fa-times fa-2x text-danger"></i></a>
+                                    <a href="{{ route('admin.orderdetails',['order_id'=>$order->id]) }}" class="btn btn-info btn-sm">Details</a>
                                 </td>
                             </tr>
                                 
