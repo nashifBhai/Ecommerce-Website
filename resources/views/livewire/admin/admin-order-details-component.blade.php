@@ -7,7 +7,46 @@
             display: block !important;
         }
     </style>
-    <div class="containers" style="padding:30px 0;"></div>
+    <div class="containers" style="padding:30px 0;">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Order Item
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{  route('admin.orders')}}" class="btn btn-success pull-right">all orders</a>
+                        </div>
+                    <div class="panel-body">
+                        <div class="wrap-iten-in-cart">            
+                            <h3 class="box-title">Products Details</h3>
+                            <ul class="products-cart">
+                                @foreach ($order->orderItems as $item)
+                                
+                                <li class="pr-cart-item">
+                                    <div class="product-image">
+                                        <figure><img src="{{asset('assets/images/products')}}/{{$item->product->image}}" alt="{{$item->product->image}}"></figure>
+                                    </div>
+                                    <div class="product-name">
+                                        <a class="link-to-product" href="{{route('product.details',['slug'=>$item->product->slug])}}">{{$item->product->name}}</a>
+                                    </div>
+                                    <div class="price-field produtc-price"><p class="price">$ {{$item->price}}</p></div>
+                                    <div class="quantity">
+                                        <h5>{{ $item->quantity }}</h5>
+                                        
+                                    </div>
+                                    <div class="price-field sub-total"><p class="price">${{$item->price * $item->quantity}}</p></div>
+                                </li>
+                                @endforeach												
+                            </ul>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -20,28 +59,23 @@
                             <a href="{{  route('admin.orders')}}" class="btn btn-success pull-right">all orders</a>
                         </div>
                         <div class="panel-body">
-                            <div class="wrap-iten-in-cart">            
-                                <h3 class="box-title">Products Details</h3>
-                                <ul class="products-cart">
-                                    @foreach ($order->orderItems as $item)
-                                    
-                                    <li class="pr-cart-item">
-                                        <div class="product-image">
-                                            <figure><img src="{{asset('assets/images/products')}}/{{$item->product->image}}" alt="{{$item->product->name}}"></figure>
-                                        </div>
-                                        <div class="product-name">
-                                            <a class="link-to-product" href="{{route('product.details',['slug'=>$item->product->slug])}}">{{$item->product->name}}</a>
-                                        </div>
-                                        <div class="price-field produtc-price"><p class="price">$ {{$item->price}}</p></div>
-                                        <div class="quantity">
-                                            <h5>{{ $item->quantity }}</h5>
-                                            
-                                        </div>
-                                        <div class="price-field sub-total"><p class="price">${{$item->price * $item->quantity}}</p></div>
-                                    </li>
-                                    @endforeach												
-                                </ul>
-                            </div>
+                            <table class="table">
+                                <tr>
+                                    <th>Order ID</th>
+                                    <td>{{ $order->id }}</td>
+                                    <th>Order Date</th>
+                                    <td>{{ $order->created_at }}</td>
+                                    <th>Status</th>
+                                    <td>{{ $order->status }}</td>
+                                    @if($order->status=="delivered")
+                                    <th>Delivery Date</th>
+                                    <td>{{ $order->delivered_date }}</td>
+                                    @elseif($order->status=="canceled")
+                                    <th>Canceled Date</th>
+                                    <td>{{ $order->canceled_date }}</td>
+                                    @endif
+                                </tr>
+                            </table>
 
                         </div>
                     </div>
