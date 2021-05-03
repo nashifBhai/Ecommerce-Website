@@ -15,6 +15,8 @@ use App\HttP\Livewire\AboutUsComponent;
 use App\HttP\Livewire\User\UserDashboardComponent;
 use App\HttP\Livewire\User\UserOrdersComponent;
 use App\HttP\Livewire\User\UserOrderDetailsComponent;
+use App\HttP\Livewire\User\UserReviewComponent;
+
 
 use App\HttP\Livewire\Admin\AdminDashboardComponent;
 use App\HttP\Livewire\Admin\AdminCategoryComponent;
@@ -73,6 +75,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/orders', UserOrdersComponent::class)->name('user.orders');
     Route::get('/user/orders/{order_id}', UserOrderDetailsComponent::class)->name('user.orderdetails');
+    Route::get('/user/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
+
 
 
 });
